@@ -33,7 +33,7 @@ High-Level Architecture:
  2. Scala 11.8
  3. sbt - Build tool
 
- Design Decisions:
+#### Design Decisions:
 
          1. ETL Process-
              - This application has been designed as a ETL component
@@ -55,10 +55,10 @@ High-Level Architecture:
 
 #### Usage
 
-- Generate Weather Report
-
-    - sbt run 
-        ( default  count is 10)
+Generate Weather Report:
+-----------------------
+- sbt run  
+  ( default  count is 10)
         output
         -------
         0|Sydney|-33.86,151.20,17.00|2019-03-20T12:14:59|Sunny|+71.04|1013.59|0.85
@@ -72,7 +72,7 @@ High-Level Architecture:
         8|Waitara|-33.70,151.10,171.00|2019-03-20T12:14:59|Sunny|+68.29|1013.64|0.89
         9|Strathfield|-33.88,151.08,38.00|2019-03-20T12:14:59|Sunny|+71.04|1013.59|0.84
         
-    -  sbt "run --output-count 20" 
+-  sbt "run --output-count 20" 
        
        output
        -------  
