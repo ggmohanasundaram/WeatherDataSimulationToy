@@ -14,13 +14,14 @@ class WeatherDataGenerator(override val sourceConfig: SourceConfig, override val
                           (implicit sparkSession: SparkSession) extends DataGenerator {
 
 
-  private val inputPath: String = sourceConfig.inputPath.get
+  private val inputPath: String =  s"${System.getProperty("user.dir")}/trainingData/"
 
   private def initiateModelObjects(className: String): TrainingModelBuilder = {
     val trainingModel = Class.forName(s"au.com.cba.weatherdata.generator.${className}Model")
     trainingModel.getConstructor(classOf[String], classOf[SparkSession]).
-      newInstance(s"${inputPath}${className}.txt", sparkSession).asInstanceOf[TrainingModelBuilder]
+      newInstance(s"${inputPath}${className.toLowerCase}.txt", sparkSession).asInstanceOf[TrainingModelBuilder]
   }
+
 
   lazy val models = WeatherDataEnum.values.map(x => initiateModelObjects(x.toString))
 
