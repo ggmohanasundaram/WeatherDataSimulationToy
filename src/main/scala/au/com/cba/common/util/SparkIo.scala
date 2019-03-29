@@ -26,4 +26,12 @@ class SparkIo {
     val repartion = dataset.repartition(1)
     repartion.write.mode(SaveMode.Overwrite).option("header", false).text(filePath)
   }
+  def writeOrc[T](dataset: Dataset[T], filePath: String)(implicit sparkSession: SparkSession) = {
+    val repartion = dataset.repartition(1)
+    repartion.write.mode(SaveMode.Overwrite).option("header", false).orc(filePath)
+  }
+
+  def readOrc(filePath:String)(implicit sparkSession: SparkSession) ={
+    sparkSession.read.orc(filePath)
+  }
 }
